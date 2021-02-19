@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Illuminate\Http\Request;
+use App\Category;
 
 class TestController extends Controller
 {
-    public function welcome(){
 
-        $products = Product::all();
-        return view('welcome')->with(compact('products'));
+    public function welcome()
+    {
+    	$categories = Category::has('products')->get();
+    	return view('welcome')->with(compact('categories'));
     }
 
 }

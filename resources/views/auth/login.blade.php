@@ -17,19 +17,34 @@
                         <p class="text-divider">Ingresa tus datos</p>
                         <div class="content">
 
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">fingerprint</i>
-                                </span>
-                                <input id="username" type="text" placeholder="Username" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
-                            </div>
-
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">lock_outline</i>
-                                </span>
-                                <input placeholder="Contraseña" id="password" type="password" class="form-control" name="password" required />
-                            </div>
+                            <div class="group-material-login">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required autocomplete="email" maxlength="70" placeholder="Ingrese su correo electronico...">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <span class="highlight-login"></span>
+                                <span class="bar-login"></span>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
+                  
+                              </div>
+                              <br>
+                              <div class="group-material-login">
+                                <input id="password" type="password"  class="form-control @error('password') is-invalid @enderror"
+                                name="password" required autocomplete="current-password" maxlength="70"
+                                placeholder="Ingrese su contraseña">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <span class="highlight-login"></span>
+                                <span class="bar-login"></span>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
+                  
+                              </div>
 
                             <div class="checkbox">
                                 <label>
@@ -50,5 +65,6 @@
         </div>
     </div>
 
+    
 </div>
 @endsection
